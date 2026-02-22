@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:14.3
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: '12345678'
+      POSTGRES_DB: 'jpa'
+    container_name: jpa_postgres
+    volumes:
+      - postgres_jpa:/var/lib/postgresql/data
+
+volumes:
+  postgres_jpa:
