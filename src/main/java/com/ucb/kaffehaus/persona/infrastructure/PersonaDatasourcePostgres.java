@@ -9,27 +9,13 @@ import com.ucb.kaffehaus.persona.domain.Persona;
 import com.ucb.kaffehaus.persona.domain.PersonaDatasource;
 
 @Service
-public class PersonaDatasourcePostgres implements PersonaDatasource{
+public class PersonaDatasourcePostgres implements PersonaDatasource {
 
     PersonaJpaRepository personaJpaRepository;
 
     public PersonaDatasourcePostgres(PersonaJpaRepository personaJpaRepository) {
         this.personaJpaRepository = personaJpaRepository;
     }
-
-
-    public PersonaEntity personaDomainToPersistence(Persona persona){
-        PersonaEntity entity = new PersonaEntity(
-            persona.getId(),
-            persona.getNombre(),
-            persona.getApellidos(),
-            persona.getTelefono(),
-            persona.getDni(),
-            persona.isBorrado()    
-        );
-        return entity;
-    }
-
 
     @Override
     public Persona save(Persona persona) {
@@ -53,13 +39,34 @@ public class PersonaDatasourcePostgres implements PersonaDatasource{
 
     @Override
     public Optional<Persona> findOne(int Id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findOne'");
+        return personaJpaRepository.findById(Id).map(this::toDomain);
     }
 
     @Override
-    public boolean deleteOne(int Id) {
+    public boolean deleteOne(int Id) {  
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteOne'");
+    }
+
+    private Persona toDomain(PersonaEntity personaEntity) {
+        return Persona.restore(
+            personaEntity.getId(),
+            personaEntity.getNombre(),
+            personaEntity.getApellidos(),
+            personaEntity.getTelefono(),
+            personaEntity.getDni(),
+            personaEntity.isBorrado()
+        );
+    }
+
+    private PersonaEntity personaDomainToPersistence(Persona persona) {
+        PersonaEntity entity = new PersonaEntity(
+                persona.getId(),
+                persona.getNombre(),
+                persona.getApellidos(),
+                persona.getTelefono(),
+                persona.getDni(),
+                persona.isBorrado());
+        return entity;
     }
 }

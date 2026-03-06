@@ -22,6 +22,10 @@ public class Persona extends AggregateRoot<Integer>{
         return new Persona(null, nombre, apellidos, telefono, dni, false);
     }
 
+    public static Persona restore(int id, String nombre, String apellidos, String telefono, String dni, boolean borrado){
+        return new Persona(id, nombre, apellidos, telefono, dni, borrado);
+    }
+
     
     public String getNombre() {return nombre;}
     public void setNombre(String nombre) {this.nombre = nombre;}
