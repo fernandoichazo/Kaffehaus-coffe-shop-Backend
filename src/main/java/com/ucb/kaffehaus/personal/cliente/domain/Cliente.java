@@ -8,8 +8,14 @@ public class Cliente extends AggregateRoot<Integer>{
     private boolean borrado;
     private Persona persona;
 
-    public Cliente(Integer id) {
+    private Cliente(Integer id, boolean borrado, Persona persona) {
         super(id);
+        this.borrado = borrado;
+        this.persona = persona;
+    }
+
+    public static Cliente create(Persona persona){
+        return new Cliente(null, false, persona);
     }
 
     public void delete(){
