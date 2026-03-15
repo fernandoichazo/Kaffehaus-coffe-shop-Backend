@@ -1,8 +1,8 @@
 package com.ucb.kaffehaus.personal.persona.domain;
 
-import com.ucb.kaffehaus.personal.shared.domain.AggregateRoot;
 
-public class Persona extends AggregateRoot<Integer>{
+public class Persona{
+    private Integer id;
     private String nombre;
     private String apellidos;
     private String telefono;
@@ -10,7 +10,7 @@ public class Persona extends AggregateRoot<Integer>{
     private boolean borrado;
 
     private Persona(Integer id, String nombre, String apellidos, String telefono, String dni, boolean borrado) {
-        super(id);
+        this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
@@ -26,7 +26,9 @@ public class Persona extends AggregateRoot<Integer>{
         return new Persona(id, nombre, apellidos, telefono, dni, borrado);
     }
 
-    
+
+    public Integer getId() {return id;}
+    public void setId(Integer id) {this.id = id;}
     public String getNombre() {return nombre;}
     public void setNombre(String nombre) {this.nombre = nombre;}
     public String getApellidos() {return apellidos;}
