@@ -1,13 +1,13 @@
-package com.ucb.kaffehaus.persona.application;
+package com.ucb.kaffehaus.personal.persona.application;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ucb.kaffehaus.persona.application.dto.CreatePersonaRequest;
-import com.ucb.kaffehaus.persona.domain.Persona;
-import com.ucb.kaffehaus.persona.domain.PersonaRepository;
-import com.ucb.kaffehaus.shared.application.dto.ValidationResult;
-import com.ucb.kaffehaus.shared.application.exception.ValidationException;
+import com.ucb.kaffehaus.personal.persona.application.dto.CreatePersonaRequest;
+import com.ucb.kaffehaus.personal.persona.domain.Persona;
+import com.ucb.kaffehaus.personal.persona.domain.PersonaRepository;
+import com.ucb.kaffehaus.personal.shared.application.dto.ValidationResult;
+import com.ucb.kaffehaus.personal.shared.application.exception.ValidationException;
 
 @Service
 @Transactional

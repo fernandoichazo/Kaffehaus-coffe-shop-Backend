@@ -1,4 +1,4 @@
-package com.ucb.kaffehaus.persona.infrastructure;
+package com.ucb.kaffehaus.personal.persona.infrastructure;
 import jakarta.persistence.*;
 
 @Entity

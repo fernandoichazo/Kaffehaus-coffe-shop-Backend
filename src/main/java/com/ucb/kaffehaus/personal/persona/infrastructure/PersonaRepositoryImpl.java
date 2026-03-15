@@ -1,12 +1,13 @@
-package com.ucb.kaffehaus.persona.infrastructure;
+package com.ucb.kaffehaus.personal.persona.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
-import com.ucb.kaffehaus.persona.domain.Persona;
-import com.ucb.kaffehaus.persona.domain.PersonaDatasource;
-import com.ucb.kaffehaus.persona.domain.PersonaRepository;
+
+import com.ucb.kaffehaus.personal.persona.domain.Persona;
+import com.ucb.kaffehaus.personal.persona.domain.PersonaDatasource;
+import com.ucb.kaffehaus.personal.persona.domain.PersonaRepository;
 
 @Service
 public class PersonaRepositoryImpl implements PersonaRepository{

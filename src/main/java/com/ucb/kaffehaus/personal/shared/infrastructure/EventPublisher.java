@@ -1,8 +1,9 @@
-package com.ucb.kaffehaus.shared.infrastructure;
+package com.ucb.kaffehaus.personal.shared.infrastructure;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
-import com.ucb.kaffehaus.shared.domain.DomainEvent;
+
+import com.ucb.kaffehaus.personal.shared.domain.DomainEvent;
 
 
 

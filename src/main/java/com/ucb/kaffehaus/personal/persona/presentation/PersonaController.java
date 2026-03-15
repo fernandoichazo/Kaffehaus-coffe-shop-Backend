@@ -1,14 +1,14 @@
-package com.ucb.kaffehaus.persona.presentation;
+package com.ucb.kaffehaus.personal.persona.presentation;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ucb.kaffehaus.persona.application.CreatePersonaUseCase;
-import com.ucb.kaffehaus.persona.application.dto.CreatePersonaRequest;
-import com.ucb.kaffehaus.persona.application.dto.PersonaResponse;
-import com.ucb.kaffehaus.persona.domain.Persona;
-import com.ucb.kaffehaus.shared.application.exception.ValidationException;
-import com.ucb.kaffehaus.shared.application.exception.ErrorResponse;
+import com.ucb.kaffehaus.personal.persona.application.CreatePersonaUseCase;
+import com.ucb.kaffehaus.personal.persona.application.dto.CreatePersonaRequest;
+import com.ucb.kaffehaus.personal.persona.application.dto.PersonaResponse;
+import com.ucb.kaffehaus.personal.persona.domain.Persona;
+import com.ucb.kaffehaus.personal.shared.application.exception.ErrorResponse;
+import com.ucb.kaffehaus.personal.shared.application.exception.ValidationException;
 
 import java.time.LocalDateTime;
 

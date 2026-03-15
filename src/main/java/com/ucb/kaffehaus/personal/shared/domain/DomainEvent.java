@@ -1,4 +1,4 @@
-package com.ucb.kaffehaus.shared.domain;
+package com.ucb.kaffehaus.personal.shared.domain;
 
 import java.time.LocalDateTime;
 

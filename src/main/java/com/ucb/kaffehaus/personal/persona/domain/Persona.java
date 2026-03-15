@@ -1,6 +1,6 @@
-package com.ucb.kaffehaus.persona.domain;
+package com.ucb.kaffehaus.personal.persona.domain;
 
-import com.ucb.kaffehaus.shared.domain.AggregateRoot;
+import com.ucb.kaffehaus.personal.shared.domain.AggregateRoot;
 
 public class Persona extends AggregateRoot<Integer>{
     private String nombre;

@@ -1,6 +1,6 @@
-package com.ucb.kaffehaus.persona.application.dto;
+package com.ucb.kaffehaus.personal.persona.application.dto;
 
-import com.ucb.kaffehaus.persona.domain.Persona;
+import com.ucb.kaffehaus.personal.persona.domain.Persona;
 
 public class PersonaResponse {
     private int id;

@@ -1,4 +1,4 @@
-package com.ucb.kaffehaus.shared.domain;
+package com.ucb.kaffehaus.personal.shared.domain;
 
 public abstract class ValueObject {
     // Value objects are immutable and compared by value

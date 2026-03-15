@@ -1,4 +1,4 @@
-package com.ucb.kaffehaus.shared.application.dto;
+package com.ucb.kaffehaus.personal.shared.application.dto;
 
 import java.util.HashMap;
 import java.util.Map;
