@@ -2,9 +2,12 @@ package com.ucb.kaffehaus.personal.cliente.infrastructure;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.ucb.kaffehaus.personal.cliente.domain.Cliente;
 import com.ucb.kaffehaus.personal.cliente.domain.ClienteDatasource;
 
+@Service
 public class ClienteDatasourcePostgres implements ClienteDatasource{
 
     @Override
