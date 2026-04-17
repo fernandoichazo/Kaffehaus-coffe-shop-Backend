@@ -31,6 +31,7 @@ public class CreatePersonaUseCase {
                 request.getApellidos(),
                 request.getTelefono(),
                 request.getDni());
+                
         return this.personaRepository.save(persona);
     }
 }

@@ -42,7 +42,4 @@ public class PersonaRepositoryImpl implements PersonaRepository{
     public boolean deleteOne(int Id) {
         return this.personaDatasource.deleteOne(Id);
     }
-    
-    
-
 }
