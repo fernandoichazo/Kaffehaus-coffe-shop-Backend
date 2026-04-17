@@ -24,6 +24,9 @@ public class PersonaEntity {
     @Column(name = "borrado", nullable = false)
     private boolean borrado;
 
+    protected PersonaEntity() {
+    }
+
     public PersonaEntity(Integer id, String nombre, String apellidos, String telefono, String dni, boolean borrado) {
         this.id = id;
         this.nombre = nombre;
