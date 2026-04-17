@@ -27,13 +27,11 @@ public class PersonaDatasourcePostgres implements PersonaDatasource {
 
     @Override
     public Optional<Persona> update(int Id, Persona persona) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
     public List<Persona> getAll() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getAll'");
     }
 
@@ -44,7 +42,6 @@ public class PersonaDatasourcePostgres implements PersonaDatasource {
 
     @Override
     public boolean deleteOne(int Id) {  
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteOne'");
     }
 
