@@ -20,6 +20,8 @@ public class UpdatePersonaUseCase {
     }
 
     public Optional<Persona> execute(int id, UpdatePersonaRequest request) {
+        request.validate();
+
         Persona personaToUpdate = Persona.create(
                 request.getNombre(),
                 request.getApellidos(),
