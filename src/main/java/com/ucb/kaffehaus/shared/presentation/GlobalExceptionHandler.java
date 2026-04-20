@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
 		ValidationErrorResponse errorResponse = new ValidationErrorResponse(
 				LocalDateTime.now(),
 				HttpStatus.BAD_REQUEST.value(),
-				"Error de validacion",
+				"Error al validar",
 				exception.getErrors());
 
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
