@@ -19,7 +19,7 @@ public class ValidationResult {
     }
     
     public Map<String, String> getErrors() {
-        return new HashMap<>(errors); // Retorna copia inmutable
+        return new HashMap<>(errors);
     }
     
     public String getErrorMessage() {
