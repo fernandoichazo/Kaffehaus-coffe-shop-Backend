@@ -9,8 +9,7 @@ public class CustomException extends RuntimeException {
     }
 
     public int getStatusCode() { return statusCode; }
-
-    // Métodos estáticos idénticos a tu clase de TS
+    
     public static CustomException badRequest(String message) {
         return new CustomException(400, message);
     }
