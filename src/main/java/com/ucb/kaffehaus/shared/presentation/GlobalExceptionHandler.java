@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
 		ErrorResponse errorResponse = new ErrorResponse(
 				LocalDateTime.now(),
 				httpStatus.value(),
-				"Error Personalizado",
+				"Error",
 				errors);
 
 		return ResponseEntity.status(httpStatus).body(errorResponse);
