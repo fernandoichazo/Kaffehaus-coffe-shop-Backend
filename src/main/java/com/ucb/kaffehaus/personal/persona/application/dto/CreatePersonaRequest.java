@@ -32,6 +32,12 @@ public class CreatePersonaRequest {
         
         if (apellidos == null || apellidos.trim().isEmpty()){
             result.addError("apellidos", "Los apellidos son necesarios");
+        } else if(apellidos.length() < 2 || apellidos.length() > 100){
+            result.addError("apellidos", "Los apellidos deben tener entre 20 y 60 caracteres");
+        }
+
+        if (dni == null || dni.trim().isEmpty()){
+            result.addError("dni", "El dni es necesario");
         }
         
         return result;
