@@ -25,7 +25,7 @@ import com.ucb.kaffehaus.personal.persona.application.dto.CreatePersonaRequest;
 import com.ucb.kaffehaus.personal.persona.application.dto.PersonaResponse;
 import com.ucb.kaffehaus.personal.persona.application.dto.UpdatePersonaRequest;
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
-import com.ucb.kaffehaus.shared.application.exception.ErrorResponse;
+import com.ucb.kaffehaus.shared.application.exception.ValidationErrorResponse;
 
 @RestController
 @RequestMapping("/api/v1/persona")
@@ -89,11 +89,11 @@ public class PersonaController {
         return ResponseEntity.noContent().build();
     }
 
-    private ErrorResponse buildNotFoundError(int id) {
+    private ValidationErrorResponse buildNotFoundError(int id) {
         Map<String, String> errors = new HashMap<>();
         errors.put("persona", "No se encontró persona con id " + id);
 
-        return new ErrorResponse(
+        return new ValidationErrorResponse(
                 LocalDateTime.now(),
                 HttpStatus.NOT_FOUND.value(),
                 "Recurso no encontrado",

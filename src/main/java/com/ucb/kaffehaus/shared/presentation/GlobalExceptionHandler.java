@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.ucb.kaffehaus.shared.application.error.CustomException;
-import com.ucb.kaffehaus.shared.application.exception.ErrorResponse;
+import com.ucb.kaffehaus.shared.application.exception.ValidationErrorResponse;
 import com.ucb.kaffehaus.shared.application.exception.ValidationException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(ValidationException.class)
-	public ResponseEntity<ErrorResponse> handleValidationException(ValidationException exception) {
-		ErrorResponse errorResponse = new ErrorResponse(
+	public ResponseEntity<ValidationErrorResponse> handleValidationException(ValidationException exception) {
+		ValidationErrorResponse errorResponse = new ValidationErrorResponse(
 				LocalDateTime.now(),
 				HttpStatus.BAD_REQUEST.value(),
 				"Error de validacion",
@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(CustomException.class)
-	public ResponseEntity<ErrorResponse> handleCustomException(CustomException exception) {
+	public ResponseEntity<ValidationErrorResponse> handleCustomException(CustomException exception) {
 		HttpStatus httpStatus = HttpStatus.resolve(exception.getStatusCode());
 		if (httpStatus == null) {
 			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
 		Map<String, String> errors = new HashMap<>();
 		errors.put("customException", exception.getMessage());
 
-		ErrorResponse errorResponse = new ErrorResponse(
+		ValidationErrorResponse errorResponse = new ValidationErrorResponse(
 				LocalDateTime.now(),
 				httpStatus.value(),
 				"Error",

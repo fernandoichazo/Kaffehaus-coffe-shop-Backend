@@ -3,13 +3,13 @@ package com.ucb.kaffehaus.shared.application.exception;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-public class ErrorResponse {
+public class ValidationErrorResponse {
     private LocalDateTime timestamp;
     private int status;
     private String message;
     private Map<String, String> errors;
     
-    public ErrorResponse(LocalDateTime timestamp, int status, 
+    public ValidationErrorResponse(LocalDateTime timestamp, int status, 
                         String message, Map<String, String> errors) {
         this.timestamp = timestamp;
         this.status = status;
