@@ -52,6 +52,7 @@ public class PersonaController {
 
     @PostMapping
     public ResponseEntity<?> createPersona(@RequestBody CreatePersonaRequest request) {
+        request.validate();
         Persona persona = createPersonaUseCase.execute(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(PersonaResponse.from(persona));
     }
@@ -73,6 +74,7 @@ public class PersonaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updatePersona(@PathVariable int id, @RequestBody UpdatePersonaRequest request) {
+        request.validate();
         return this.updatePersonaUseCase.execute(id, request)
             .<ResponseEntity<?>>map(persona -> ResponseEntity.ok(PersonaResponse.from(persona)))
             .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.buildNotFoundError(id)));

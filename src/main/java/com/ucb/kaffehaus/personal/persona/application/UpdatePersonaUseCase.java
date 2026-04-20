@@ -8,8 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ucb.kaffehaus.personal.persona.application.dto.UpdatePersonaRequest;
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
 import com.ucb.kaffehaus.personal.persona.domain.PersonaRepository;
-import com.ucb.kaffehaus.shared.application.dto.ValidationResult;
-import com.ucb.kaffehaus.shared.application.exception.ValidationException;
 
 @Service
 @Transactional
@@ -22,11 +20,6 @@ public class UpdatePersonaUseCase {
     }
 
     public Optional<Persona> execute(int id, UpdatePersonaRequest request) {
-        ValidationResult validationResult = request.validate();
-        if (validationResult.hasErrors()) {
-            throw new ValidationException(validationResult);
-        }
-
         Persona personaToUpdate = Persona.create(
                 request.getNombre(),
                 request.getApellidos(),

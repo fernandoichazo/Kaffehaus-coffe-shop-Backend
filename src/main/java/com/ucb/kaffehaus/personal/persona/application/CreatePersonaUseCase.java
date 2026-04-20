@@ -18,14 +18,11 @@ public class CreatePersonaUseCase {
     }
 
     public Persona execute(CreatePersonaRequest request) {
-        request.validate();
-
         Persona persona = Persona.create(
                 request.getNombre(),
                 request.getApellidos(),
                 request.getTelefono(),
                 request.getDni());
-                
         return this.personaRepository.save(persona);
     }
 }
