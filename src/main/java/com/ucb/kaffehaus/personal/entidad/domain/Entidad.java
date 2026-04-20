@@ -1,6 +1,6 @@
 package com.ucb.kaffehaus.personal.entidad.domain;
 
-import com.ucb.kaffehaus.personal.shared.domain.AggregateRoot;
+import com.ucb.kaffehaus.shared.domain.AggregateRoot;
 
 public class Entidad extends AggregateRoot<Integer> {
 

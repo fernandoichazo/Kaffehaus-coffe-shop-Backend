@@ -1,4 +1,4 @@
-package com.ucb.kaffehaus.personal.shared.domain;
+package com.ucb.kaffehaus.shared.domain;
 
 import java.util.ArrayList;
 import java.util.List;

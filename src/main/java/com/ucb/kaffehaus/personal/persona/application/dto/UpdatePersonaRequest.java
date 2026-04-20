@@ -1,6 +1,6 @@
 package com.ucb.kaffehaus.personal.persona.application.dto;
 
-import com.ucb.kaffehaus.personal.shared.application.dto.ValidationResult;
+import com.ucb.kaffehaus.shared.application.dto.ValidationResult;
 
 public class UpdatePersonaRequest {
     private String nombre;

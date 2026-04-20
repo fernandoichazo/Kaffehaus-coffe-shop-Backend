@@ -1,4 +1,4 @@
-package com.ucb.kaffehaus.personal.shared.application.exception;
+package com.ucb.kaffehaus.shared.application.exception;
 
 import java.time.LocalDateTime;
 import java.util.Map;

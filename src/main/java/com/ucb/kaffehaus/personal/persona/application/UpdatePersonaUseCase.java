@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ucb.kaffehaus.personal.persona.application.dto.UpdatePersonaRequest;
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
 import com.ucb.kaffehaus.personal.persona.domain.PersonaRepository;
-import com.ucb.kaffehaus.personal.shared.application.dto.ValidationResult;
-import com.ucb.kaffehaus.personal.shared.application.exception.ValidationException;
+import com.ucb.kaffehaus.shared.application.dto.ValidationResult;
+import com.ucb.kaffehaus.shared.application.exception.ValidationException;
 
 @Service
 @Transactional

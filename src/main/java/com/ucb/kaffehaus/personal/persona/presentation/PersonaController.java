@@ -25,8 +25,8 @@ import com.ucb.kaffehaus.personal.persona.application.dto.CreatePersonaRequest;
 import com.ucb.kaffehaus.personal.persona.application.dto.PersonaResponse;
 import com.ucb.kaffehaus.personal.persona.application.dto.UpdatePersonaRequest;
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
-import com.ucb.kaffehaus.personal.shared.application.exception.ErrorResponse;
-import com.ucb.kaffehaus.personal.shared.application.exception.ValidationException;
+import com.ucb.kaffehaus.shared.application.exception.ErrorResponse;
+import com.ucb.kaffehaus.shared.application.exception.ValidationException;
 
 @RestController
 @RequestMapping("/api/v1/persona")

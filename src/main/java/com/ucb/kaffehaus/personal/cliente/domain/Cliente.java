@@ -1,7 +1,7 @@
 package com.ucb.kaffehaus.personal.cliente.domain;
 
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
-import com.ucb.kaffehaus.personal.shared.domain.AggregateRoot;
+import com.ucb.kaffehaus.shared.domain.AggregateRoot;
 
 public class Cliente extends AggregateRoot<Integer>{
 
