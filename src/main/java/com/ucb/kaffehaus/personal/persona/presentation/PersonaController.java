@@ -1,9 +1,6 @@
 package com.ucb.kaffehaus.personal.persona.presentation;
 
-import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +22,6 @@ import com.ucb.kaffehaus.personal.persona.application.dto.CreatePersonaRequest;
 import com.ucb.kaffehaus.personal.persona.application.dto.PersonaResponse;
 import com.ucb.kaffehaus.personal.persona.application.dto.UpdatePersonaRequest;
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
-import com.ucb.kaffehaus.shared.application.exception.ValidationErrorResponse;
 
 @RestController
 @RequestMapping("/api/v1/persona")
@@ -66,37 +62,20 @@ public class PersonaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getOnePersona(@PathVariable int id) {
-        return this.getOnePersonaUseCase.execute(id)
-                .<ResponseEntity<?>>map(persona -> ResponseEntity.ok(PersonaResponse.from(persona)))
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.buildNotFoundError(id)));
+    public ResponseEntity<PersonaResponse> getOnePersona(@PathVariable int id) {
+        Persona persona = this.getOnePersonaUseCase.execute(id).get();
+        return ResponseEntity.ok(PersonaResponse.from(persona));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updatePersona(@PathVariable int id, @RequestBody UpdatePersonaRequest request) {
-        request.validate();
-        return this.updatePersonaUseCase.execute(id, request)
-            .<ResponseEntity<?>>map(persona -> ResponseEntity.ok(PersonaResponse.from(persona)))
-            .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.buildNotFoundError(id)));
+    public ResponseEntity<PersonaResponse> updatePersona(@PathVariable int id, @RequestBody UpdatePersonaRequest request) {
+        Persona persona = this.updatePersonaUseCase.execute(id, request).get();
+        return ResponseEntity.ok(PersonaResponse.from(persona));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePersona(@PathVariable int id) {
         boolean deleted = this.deletePersonaUseCase.execute(id);
-        if (!deleted) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.buildNotFoundError(id));
-        }
-        return ResponseEntity.noContent().build();
-    }
-
-    private ValidationErrorResponse buildNotFoundError(int id) {
-        Map<String, String> errors = new HashMap<>();
-        errors.put("persona", "No se encontró persona con id " + id);
-
-        return new ValidationErrorResponse(
-                LocalDateTime.now(),
-                HttpStatus.NOT_FOUND.value(),
-                "Recurso no encontrado",
-                errors);
+        return ResponseEntity.ok(deleted);
     }
 }
