@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
 import com.ucb.kaffehaus.personal.persona.domain.PersonaDatasource;
+import com.ucb.kaffehaus.shared.application.error.CustomException;
 
 @Service
 public class PersonaDatasourcePostgres implements PersonaDatasource {
@@ -28,16 +29,21 @@ public class PersonaDatasourcePostgres implements PersonaDatasource {
 
     @Override
     public Optional<Persona> update(int Id, Persona persona) {
-        return this.personaJpaRepository.findById(Id).map(personaEntity -> {
-            personaEntity.setNombre(persona.getNombre());
-            personaEntity.setApellidos(persona.getApellidos());
-            personaEntity.setTelefono(persona.getTelefono());
-            personaEntity.setDni(persona.getDni());
-            personaEntity.setBorrado(persona.isBorrado());
+        PersonaEntity personaEntity = this.personaJpaRepository.findById(Id)
+                .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + Id));
 
-            PersonaEntity updatedPersona = this.personaJpaRepository.save(personaEntity);
-            return this.toDomain(updatedPersona);
-        });
+        if (personaEntity.isBorrado()) {
+            throw CustomException.notFound("No se encontro persona con id " + Id);
+        }
+
+        personaEntity.setNombre(persona.getNombre());
+        personaEntity.setApellidos(persona.getApellidos());
+        personaEntity.setTelefono(persona.getTelefono());
+        personaEntity.setDni(persona.getDni());
+        personaEntity.setBorrado(persona.isBorrado());
+
+        PersonaEntity updatedPersona = this.personaJpaRepository.save(personaEntity);
+        return Optional.of(this.toDomain(updatedPersona));
     }
 
     @Override
@@ -50,19 +56,23 @@ public class PersonaDatasourcePostgres implements PersonaDatasource {
 
     @Override
     public Optional<Persona> findOne(int Id) {
-        return personaJpaRepository.findById(Id).map(this::toDomain);
+        PersonaEntity personaEntity = this.personaJpaRepository.findById(Id)
+                .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + Id));
+
+        if (personaEntity.isBorrado()) {
+            throw CustomException.notFound("No se encontro persona con id " + Id);
+        }
+
+        return Optional.of(this.toDomain(personaEntity));
     }
 
     @Override
     public boolean deleteOne(int Id) {  
-        Optional<PersonaEntity> personaEntityOptional = this.personaJpaRepository.findById(Id);
-        if (personaEntityOptional.isEmpty()) {
-            return false;
-        }
+        PersonaEntity personaEntity = this.personaJpaRepository.findById(Id)
+                .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + Id));
 
-        PersonaEntity personaEntity = personaEntityOptional.get();
         if (personaEntity.isBorrado()) {
-            return false;
+            throw CustomException.notFound("No se encontro persona con id " + Id);
         }
 
         personaEntity.setBorrado(true);
