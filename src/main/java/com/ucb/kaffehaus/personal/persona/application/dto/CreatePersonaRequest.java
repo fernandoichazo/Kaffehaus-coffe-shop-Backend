@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.persona.application.dto;
 
 import com.ucb.kaffehaus.shared.application.dto.ValidationResult;
+import com.ucb.kaffehaus.shared.application.exception.ValidationException;
 
 public class CreatePersonaRequest {
     private String nombre;
@@ -33,13 +34,14 @@ public class CreatePersonaRequest {
         if (apellidos == null || apellidos.trim().isEmpty()){
             result.addError("apellidos", "Los apellidos son necesarios");
         } else if(apellidos.length() < 2 || apellidos.length() > 100){
-            result.addError("apellidos", "Los apellidos deben tener entre 20 y 60 caracteres");
+            result.addError("apellidos", "Los apellidos deben tener entre 2 y 100 caracteres");
         }
 
         if (dni == null || dni.trim().isEmpty()){
             result.addError("dni", "El dni es necesario");
         }
         
+        if (result.hasErrors()) throw new ValidationException(result);
         return result;
     }
 }
