@@ -73,8 +73,8 @@ public class PersonaController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getOnePersona(@PathVariable int id) {
         return this.getOnePersonaUseCase.execute(id)
-            .<ResponseEntity<?>>map(persona -> ResponseEntity.ok(PersonaResponse.from(persona)))
-            .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.buildNotFoundError(id)));
+                .<ResponseEntity<?>>map(persona -> ResponseEntity.ok(PersonaResponse.from(persona)))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.buildNotFoundError(id)));
     }
 
     @PutMapping("/{id}")
