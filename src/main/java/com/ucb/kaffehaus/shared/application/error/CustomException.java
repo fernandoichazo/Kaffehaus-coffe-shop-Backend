@@ -9,10 +9,18 @@ public class CustomException extends RuntimeException {
     }
 
     public int getStatusCode() { return statusCode; }
-    
+
     public static CustomException badRequest(String message) {
         return new CustomException(400, message);
     }
+
+    public static CustomException unauthorized(String message) {
+        return new CustomException(401, message);
+    }
+
+    public static CustomException forbidden(String message) {
+        return new CustomException(403, message);
+    } 
 
     public static CustomException notFound(String message) {
         return new CustomException(404, message);
@@ -20,5 +28,9 @@ public class CustomException extends RuntimeException {
 
     public static CustomException internalServer(String message) {
         return new CustomException(500, message);
+    }
+
+    public static CustomException custom(Integer number, String message) {
+        return new CustomException(number, message);
     }
 }
