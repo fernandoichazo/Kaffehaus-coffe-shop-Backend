@@ -26,7 +26,6 @@ import com.ucb.kaffehaus.personal.persona.application.dto.PersonaResponse;
 import com.ucb.kaffehaus.personal.persona.application.dto.UpdatePersonaRequest;
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
 import com.ucb.kaffehaus.shared.application.exception.ErrorResponse;
-import com.ucb.kaffehaus.shared.application.exception.ValidationException;
 
 @RestController
 @RequestMapping("/api/v1/persona")
@@ -53,13 +52,8 @@ public class PersonaController {
 
     @PostMapping
     public ResponseEntity<?> createPersona(@RequestBody CreatePersonaRequest request) {
-        try {
-            Persona persona = createPersonaUseCase.execute(request);
-            return ResponseEntity.status(HttpStatus.CREATED).body(PersonaResponse.from(persona));
-        } catch (ValidationException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(this.buildValidationError(e.getErrors()));
-        }
+        Persona persona = createPersonaUseCase.execute(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(PersonaResponse.from(persona));
     }
 
     @GetMapping
@@ -79,14 +73,9 @@ public class PersonaController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updatePersona(@PathVariable int id, @RequestBody UpdatePersonaRequest request) {
-        try {
-            return this.updatePersonaUseCase.execute(id, request)
-                    .<ResponseEntity<?>>map(persona -> ResponseEntity.ok(PersonaResponse.from(persona)))
-                    .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.buildNotFoundError(id)));
-        } catch (ValidationException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(this.buildValidationError(e.getErrors()));
-        }
+        return this.updatePersonaUseCase.execute(id, request)
+            .<ResponseEntity<?>>map(persona -> ResponseEntity.ok(PersonaResponse.from(persona)))
+            .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.buildNotFoundError(id)));
     }
 
     @DeleteMapping("/{id}")
@@ -96,14 +85,6 @@ public class PersonaController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(this.buildNotFoundError(id));
         }
         return ResponseEntity.noContent().build();
-    }
-
-    private ErrorResponse buildValidationError(Map<String, String> errors) {
-        return new ErrorResponse(
-                LocalDateTime.now(),
-                HttpStatus.BAD_REQUEST.value(),
-                "Error de validación",
-                errors);
     }
 
     private ErrorResponse buildNotFoundError(int id) {
