@@ -12,7 +12,7 @@ public class CategoriaEntity {
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 
-    @Column(name = "nombre", nullable = false, length = 100)
+    @Column(name = "nombre", nullable = false, length = 100, unique = true)
     private String nombre;
 
     @Column(name = "borrado", nullable = false)
@@ -25,10 +25,11 @@ public class CategoriaEntity {
         this.borrado = false;
     }
 
-    public UUID getId() {return id;}
-    public void setId(UUID id) {this.id = id;}
-    public String getNombre() {return nombre;}
-    public void setNombre(String nombre) {this.nombre = nombre;}
-    public boolean isBorrado() {return borrado;}
-    public void setBorrado(boolean borrado) {this.borrado = borrado;}
+    // Getters y Setters
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public boolean isBorrado() { return borrado; }
+    public void setBorrado(boolean borrado) { this.borrado = borrado; }
 }
