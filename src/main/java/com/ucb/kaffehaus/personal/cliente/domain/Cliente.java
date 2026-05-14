@@ -18,6 +18,10 @@ public class Cliente extends AggregateRoot<Integer>{
         return new Cliente(null, false, persona);
     }
 
+    public static Cliente restore(Integer id, Persona persona, boolean borrado) {
+        return new Cliente(id, borrado, persona);
+    }
+
     public void delete(){
         this.borrado = true;
     };

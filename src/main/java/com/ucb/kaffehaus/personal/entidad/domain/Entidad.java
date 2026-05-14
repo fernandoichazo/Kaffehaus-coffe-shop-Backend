@@ -28,13 +28,27 @@ public class Entidad extends AggregateRoot<Integer> {
     }
 
     public static Entidad create(
-        int id,
         String nombre,
         String nit,
         String telefono,
         String descripcion
     ){
-        return new Entidad(id, nombre, nit, telefono, descripcion, false);
+        return new Entidad(null, nombre, nit, telefono, descripcion, false);
+    }
+
+    public static Entidad restore(
+        Integer id,
+        String nombre,
+        String nit,
+        String telefono,
+        String descripcion,
+        boolean borrado
+    ) {
+        return new Entidad(id, nombre, nit, telefono, descripcion, borrado);
+    }
+
+    public void delete() {
+        this.borrado = true;
     }
 
 

@@ -1,5 +1,6 @@
 package com.ucb.kaffehaus.personal.cliente.infrastructure;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -25,6 +26,21 @@ public class ClienteRepositoryImpl implements ClienteRepository{
     @Override
     public Optional<Cliente> update(int Id, Cliente cliente) {
         return this.datasource.update(Id, cliente);
+    }
+
+    @Override
+    public List<Cliente> getAll() {
+        return this.datasource.getAll();
+    }
+
+    @Override
+    public Optional<Cliente> findOne(int Id) {
+        return this.datasource.findOne(Id);
+    }
+
+    @Override
+    public boolean deleteOne(int Id) {
+        return this.datasource.deleteOne(Id);
     }
 
 }
