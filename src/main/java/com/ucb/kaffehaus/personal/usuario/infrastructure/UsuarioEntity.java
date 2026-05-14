@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.usuario.infrastructure;
 import java.time.LocalDateTime;
 
 import com.ucb.kaffehaus.personal.persona.infrastructure.PersonaEntity;
+import com.ucb.kaffehaus.personal.rol.infrastructure.RolEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,6 +27,9 @@ public class UsuarioEntity {
     @JoinColumn(name = "id_persona", nullable = false, unique = true)
     private PersonaEntity persona;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private RolEntity rol;
+
     @Column(name = "correo", nullable = false, unique = true)
     private String correo;
 
@@ -40,8 +44,9 @@ public class UsuarioEntity {
 
     protected UsuarioEntity() {}
 
-    public UsuarioEntity(PersonaEntity persona, String correo, String contrasena) {
+    public UsuarioEntity(PersonaEntity persona, RolEntity rol,String correo, String contrasena) {
         this.persona = persona;
+        this.rol = rol;
         this.correo = correo;
         this.contrasena = contrasena;
         this.fecC = LocalDateTime.now(); 
@@ -59,6 +64,8 @@ public class UsuarioEntity {
     public void setFecC(LocalDateTime fecC) {this.fecC = fecC;}
     public LocalDateTime getFecU() {return fecU;}
     public void setFecU(LocalDateTime fecU) {this.fecU = fecU;}
+    public RolEntity getRol() {return rol;}
+    public void setRol(RolEntity rol) {this.rol = rol;}
 
     @PreUpdate
     protected void onUpdate() {
