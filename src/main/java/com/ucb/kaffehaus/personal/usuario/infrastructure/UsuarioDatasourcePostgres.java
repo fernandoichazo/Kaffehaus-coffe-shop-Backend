@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.usuario.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -49,7 +50,7 @@ public class UsuarioDatasourcePostgres implements UsuarioDatasource {
     }
 
     @Override
-    public Optional<Usuario> update(int Id, Usuario usuario) {
+    public Optional<Usuario> update(UUID Id, Usuario usuario) {
         UsuarioEntity entity = this.usuarioJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro usuario con id " + Id));
 
@@ -85,7 +86,7 @@ public class UsuarioDatasourcePostgres implements UsuarioDatasource {
     }
 
     @Override
-    public Optional<Usuario> findOne(int Id) {
+    public Optional<Usuario> findOne(UUID Id) {
         UsuarioEntity entity = this.usuarioJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro usuario con id " + Id));
 
@@ -101,7 +102,7 @@ public class UsuarioDatasourcePostgres implements UsuarioDatasource {
     }
 
     @Override
-    public boolean deleteOne(int Id) {
+    public boolean deleteOne(UUID Id) {
         UsuarioEntity entity = this.usuarioJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro usuario con id " + Id));
 
@@ -128,7 +129,7 @@ public class UsuarioDatasourcePostgres implements UsuarioDatasource {
         return Usuario.restore(entity.getId(), persona, rol, entity.getCorreo(), entity.getContrasena());
     }
 
-    private PersonaEntity getPersonaEntity(Integer personaId) {
+    private PersonaEntity getPersonaEntity(UUID personaId) {
         PersonaEntity personaEntity = this.personaJpaRepository.findById(personaId)
                 .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + personaId));
 
@@ -139,7 +140,7 @@ public class UsuarioDatasourcePostgres implements UsuarioDatasource {
         return personaEntity;
     }
 
-    private RolEntity getRolEntity(Integer rolId) {
+    private RolEntity getRolEntity(UUID rolId) {
         RolEntity rolEntity = this.rolJpaRepository.findById(rolId)
                 .orElseThrow(() -> CustomException.notFound("No se encontro rol con id " + rolId));
 

@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.entidad.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ public class GetOneEntidadUseCase {
         this.entidadRepository = entidadRepository;
     }
 
-    public Optional<Entidad> execute(int id) {
+    public Optional<Entidad> execute(UUID id) {
         return this.entidadRepository.findOne(id)
                 .filter(entidad -> !entidad.isBorrado());
     }

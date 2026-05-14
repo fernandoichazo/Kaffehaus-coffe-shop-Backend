@@ -24,9 +24,18 @@ public class CreateClienteUseCase {
 
     public Cliente execute(CreateClienteRequest request) {
         request.validate();
-
-        Persona persona = this.personaRepository.findOne(request.getPersonaId())
-                .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + request.getPersonaId()));
+        Persona persona;
+        if (request.getPersonaId() == null) {
+            persona = Persona.create(
+                    request.getNombre(),
+                    request.getApellidos(),
+                    request.getTelefono(),
+                    request.getDni());
+            persona = this.personaRepository.save(persona);
+        } else {
+            persona = this.personaRepository.findOne(request.getPersonaId())
+                    .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + request.getPersonaId()));
+        }
 
         Cliente cliente = Cliente.create(persona);
         return this.clienteRepository.save(cliente);

@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.proveedor.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ public class GetOneProveedorUseCase {
         this.proveedorRepository = proveedorRepository;
     }
 
-    public Optional<Proveedor> execute(int id) {
+    public Optional<Proveedor> execute(UUID id) {
         return this.proveedorRepository.findOne(id)
                 .filter(proveedor -> !proveedor.isBorrado());
     }

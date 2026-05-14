@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.entidad.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class EntidadDatasourcePostgres implements EntidadDatasource{
 	}
 
 	@Override
-	public Optional<Entidad> update(int Id, Entidad entidad) {
+	public Optional<Entidad> update(UUID Id, Entidad entidad) {
 		EntidadEntity entity = this.entidadJpaRepository.findById(Id)
 				.orElseThrow(() -> CustomException.notFound("No se encontro entidad con id " + Id));
 
@@ -55,7 +56,7 @@ public class EntidadDatasourcePostgres implements EntidadDatasource{
 	}
 
 	@Override
-	public Optional<Entidad> findOne(int Id) {
+	public Optional<Entidad> findOne(UUID Id) {
 		EntidadEntity entity = this.entidadJpaRepository.findById(Id)
 				.orElseThrow(() -> CustomException.notFound("No se encontro entidad con id " + Id));
 
@@ -67,7 +68,7 @@ public class EntidadDatasourcePostgres implements EntidadDatasource{
 	}
 
 	@Override
-	public boolean deleteOne(int Id) {
+	public boolean deleteOne(UUID Id) {
 		EntidadEntity entity = this.entidadJpaRepository.findById(Id)
 				.orElseThrow(() -> CustomException.notFound("No se encontro entidad con id " + Id));
 

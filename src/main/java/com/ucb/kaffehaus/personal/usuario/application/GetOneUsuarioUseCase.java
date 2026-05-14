@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.usuario.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ public class GetOneUsuarioUseCase {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public Optional<Usuario> execute(int id) {
+    public Optional<Usuario> execute(UUID id) {
         return this.usuarioRepository.findOne(id);
     }
 }

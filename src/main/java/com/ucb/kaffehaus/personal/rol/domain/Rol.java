@@ -1,13 +1,15 @@
 package com.ucb.kaffehaus.personal.rol.domain;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.shared.domain.AggregateRoot;
 
-public class Rol extends AggregateRoot<Integer> {
+public class Rol extends AggregateRoot<UUID> {
 
     private String nombre;
     private boolean borrado;
 
-    private Rol(Integer id, String nombre, boolean borrado) {
+    private Rol(UUID id, String nombre, boolean borrado) {
         super(id);
         this.nombre = nombre;
         this.borrado = borrado;
@@ -17,7 +19,7 @@ public class Rol extends AggregateRoot<Integer> {
         return new Rol(null, nombre, false);
     }
 
-    public static Rol restore(Integer id, String nombre, boolean borrado) {
+    public static Rol restore(UUID id, String nombre, boolean borrado) {
         return new Rol(id, nombre, borrado);
     }
 

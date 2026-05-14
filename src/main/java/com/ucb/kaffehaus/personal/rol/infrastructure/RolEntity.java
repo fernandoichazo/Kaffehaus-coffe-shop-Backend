@@ -2,14 +2,15 @@ package com.ucb.kaffehaus.personal.rol.infrastructure;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "rol")
 public class RolEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
@@ -32,8 +33,8 @@ public class RolEntity {
         this.borrado = false;
     }
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
     public String getNombre() {return nombre;}
     public void setNombre(String nombre) {this.nombre = nombre;}
     public LocalDateTime getFecC() {return fecC;}

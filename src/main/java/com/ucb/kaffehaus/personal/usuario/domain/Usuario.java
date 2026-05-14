@@ -1,17 +1,19 @@
 package com.ucb.kaffehaus.personal.usuario.domain;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
 import com.ucb.kaffehaus.personal.rol.domain.Rol;
 import com.ucb.kaffehaus.shared.domain.AggregateRoot;
 
-public class Usuario extends AggregateRoot<Integer> {
+public class Usuario extends AggregateRoot<UUID> {
 
     private Persona persona;
     private Rol rol;
     private String correo;
     private String contrasena;
 
-    private Usuario(Integer id, Persona persona, Rol rol, String correo, String contrasena) {
+    private Usuario(UUID id, Persona persona, Rol rol, String correo, String contrasena) {
         super(id);
         this.persona = persona;
         this.rol = rol;
@@ -23,7 +25,7 @@ public class Usuario extends AggregateRoot<Integer> {
         return new Usuario(null, persona, rol, correo, contrasena);
     }
 
-    public static Usuario restore(Integer id, Persona persona, Rol rol, String correo, String contrasena) {
+    public static Usuario restore(UUID id, Persona persona, Rol rol, String correo, String contrasena) {
         return new Usuario(id, persona, rol, correo, contrasena);
     }
 

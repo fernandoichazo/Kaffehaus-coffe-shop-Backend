@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.proveedor.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -45,7 +46,7 @@ public class ProveedorDatasourcePostgres implements ProveedorDatasource {
     }
 
     @Override
-    public Optional<Proveedor> update(int Id, Proveedor proveedor) {
+    public Optional<Proveedor> update(UUID Id, Proveedor proveedor) {
         ProveedorEntity entity = this.proveedorJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro proveedor con id " + Id));
 
@@ -77,7 +78,7 @@ public class ProveedorDatasourcePostgres implements ProveedorDatasource {
     }
 
     @Override
-    public Optional<Proveedor> findOne(int Id) {
+    public Optional<Proveedor> findOne(UUID Id) {
         ProveedorEntity entity = this.proveedorJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro proveedor con id " + Id));
 
@@ -89,7 +90,7 @@ public class ProveedorDatasourcePostgres implements ProveedorDatasource {
     }
 
     @Override
-    public boolean deleteOne(int Id) {
+    public boolean deleteOne(UUID Id) {
         ProveedorEntity entity = this.proveedorJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro proveedor con id " + Id));
 
@@ -127,7 +128,7 @@ public class ProveedorDatasourcePostgres implements ProveedorDatasource {
         return Proveedor.restore(entity.getId(), persona, entidad, entity.isBorrado());
     }
 
-    private PersonaEntity getPersonaEntity(Integer personaId) {
+    private PersonaEntity getPersonaEntity(UUID personaId) {
         PersonaEntity personaEntity = this.personaJpaRepository.findById(personaId)
                 .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + personaId));
 

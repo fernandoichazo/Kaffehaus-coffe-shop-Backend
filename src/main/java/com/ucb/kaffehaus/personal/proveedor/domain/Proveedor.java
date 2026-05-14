@@ -1,16 +1,18 @@
 package com.ucb.kaffehaus.personal.proveedor.domain;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.personal.entidad.domain.Entidad;
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
 import com.ucb.kaffehaus.shared.domain.AggregateRoot;
 
-public class Proveedor extends AggregateRoot<Integer> {
+public class Proveedor extends AggregateRoot<UUID> {
 
     private Persona persona;
     private Entidad entidad;
     private boolean borrado;
 
-    private Proveedor(Integer id, Persona persona, Entidad entidad, boolean borrado) {
+    private Proveedor(UUID id, Persona persona, Entidad entidad, boolean borrado) {
         super(id);
         this.persona = persona;
         this.entidad = entidad;
@@ -21,7 +23,7 @@ public class Proveedor extends AggregateRoot<Integer> {
         return new Proveedor(null, persona, entidad, false);
     }
 
-    public static Proveedor restore(Integer id, Persona persona, Entidad entidad, boolean borrado) {
+    public static Proveedor restore(UUID id, Persona persona, Entidad entidad, boolean borrado) {
         return new Proveedor(id, persona, entidad, borrado);
     }
 

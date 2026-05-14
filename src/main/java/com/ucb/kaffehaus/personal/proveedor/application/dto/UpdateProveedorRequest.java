@@ -1,27 +1,21 @@
 package com.ucb.kaffehaus.personal.proveedor.application.dto;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.shared.application.dto.ValidationResult;
 import com.ucb.kaffehaus.shared.application.exception.ValidationException;
 
 public class UpdateProveedorRequest {
-    private Integer personaId;
-    private Integer entidadId;
+    private UUID personaId;
+    private UUID entidadId;
 
-    public Integer getPersonaId() {return personaId;}
-    public void setPersonaId(Integer personaId) {this.personaId = personaId;}
-    public Integer getEntidadId() {return entidadId;}
-    public void setEntidadId(Integer entidadId) {this.entidadId = entidadId;}
+    public UUID getPersonaId() {return personaId;}
+    public void setPersonaId(UUID personaId) {this.personaId = personaId;}
+    public UUID getEntidadId() {return entidadId;}
+    public void setEntidadId(UUID entidadId) {this.entidadId = entidadId;}
 
     public ValidationResult validate() {
         ValidationResult result = new ValidationResult();
-
-        if (personaId != null && personaId <= 0) {
-            result.addError("personaId", "La persona no es valida");
-        }
-
-        if (entidadId != null && entidadId <= 0) {
-            result.addError("entidadId", "La entidad no es valida");
-        }
 
         if (result.hasErrors()) throw new ValidationException(result);
         return result;

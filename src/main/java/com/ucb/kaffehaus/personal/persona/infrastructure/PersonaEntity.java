@@ -1,4 +1,6 @@
 package com.ucb.kaffehaus.personal.persona.infrastructure;
+import java.util.UUID;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -6,8 +8,8 @@ import jakarta.persistence.*;
 public class PersonaEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
@@ -27,7 +29,7 @@ public class PersonaEntity {
     protected PersonaEntity() {
     }
 
-    public PersonaEntity(Integer id, String nombre, String apellidos, String telefono, String dni, boolean borrado) {
+    public PersonaEntity(UUID id, String nombre, String apellidos, String telefono, String dni, boolean borrado) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -35,8 +37,8 @@ public class PersonaEntity {
         this.dni = dni;
         this.borrado = borrado;
     }
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
     public String getNombre() {return nombre;}
     public void setNombre(String nombre) {this.nombre = nombre;}
     public String getApellidos() {return apellidos;}

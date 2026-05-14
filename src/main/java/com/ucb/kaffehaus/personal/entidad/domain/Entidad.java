@@ -1,8 +1,10 @@
 package com.ucb.kaffehaus.personal.entidad.domain;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.shared.domain.AggregateRoot;
 
-public class Entidad extends AggregateRoot<Integer> {
+public class Entidad extends AggregateRoot<UUID> {
 
     private String nombre;
     private String nit;
@@ -12,7 +14,7 @@ public class Entidad extends AggregateRoot<Integer> {
 
 
     private Entidad(
-        Integer id, 
+        UUID id, 
         String nombre, 
         String nit,
         String telefono,
@@ -37,7 +39,7 @@ public class Entidad extends AggregateRoot<Integer> {
     }
 
     public static Entidad restore(
-        Integer id,
+        UUID id,
         String nombre,
         String nit,
         String telefono,

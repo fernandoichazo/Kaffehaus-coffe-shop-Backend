@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.proveedor.presentation;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,19 +63,19 @@ public class ProveedorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProveedorResponse> getOneProveedor(@PathVariable int id) {
+    public ResponseEntity<ProveedorResponse> getOneProveedor(@PathVariable UUID id) {
         Proveedor proveedor = this.getOneProveedorUseCase.execute(id).get();
         return ResponseEntity.ok(ProveedorResponse.from(proveedor));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProveedorResponse> updateProveedor(@PathVariable int id, @RequestBody UpdateProveedorRequest request) {
+    public ResponseEntity<ProveedorResponse> updateProveedor(@PathVariable UUID id, @RequestBody UpdateProveedorRequest request) {
         Proveedor proveedor = this.updateProveedorUseCase.execute(id, request).get();
         return ResponseEntity.ok(ProveedorResponse.from(proveedor));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteProveedor(@PathVariable int id) {
+    public ResponseEntity<?> deleteProveedor(@PathVariable UUID id) {
         boolean deleted = this.deleteProveedorUseCase.execute(id);
         return ResponseEntity.ok(deleted);
     }

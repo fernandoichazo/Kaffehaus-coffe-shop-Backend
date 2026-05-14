@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.cliente.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ public class GetOneClienteUseCase {
         this.clienteRepository = clienteRepository;
     }
 
-    public Optional<Cliente> execute(int id) {
+    public Optional<Cliente> execute(UUID id) {
         return this.clienteRepository.findOne(id)
                 .filter(cliente -> !cliente.isBorrado());
     }

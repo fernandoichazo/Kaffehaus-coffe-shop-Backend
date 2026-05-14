@@ -3,6 +3,8 @@ package com.ucb.kaffehaus.personal.persona.application;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.personal.persona.domain.PersonaRepository;
 
 @Service
@@ -15,7 +17,7 @@ public class DeletePersonaUseCase {
         this.personaRepository = personaRepository;
     }
 
-    public boolean execute(int id) {
+    public boolean execute(UUID id) {
         return this.personaRepository.deleteOne(id);
     }
 }

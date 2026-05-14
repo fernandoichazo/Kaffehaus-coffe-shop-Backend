@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.cliente.infrastructure;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.ucb.kaffehaus.personal.persona.infrastructure.PersonaEntity;
 
@@ -21,8 +22,8 @@ import jakarta.persistence.Table;
 public class ClienteEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_persona", nullable = false, unique = true)
@@ -54,8 +55,8 @@ public class ClienteEntity {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
     public PersonaEntity getPersona() {return persona;}
     public void setPersona(PersonaEntity persona) {this.persona = persona;}
     public boolean isBorrado() {return borrado;}

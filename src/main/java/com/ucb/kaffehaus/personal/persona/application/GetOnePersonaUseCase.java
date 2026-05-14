@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.persona.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ public class GetOnePersonaUseCase {
         this.personaRepository = personaRepository;
     }
 
-    public Optional<Persona> execute(int id) {
+    public Optional<Persona> execute(UUID id) {
         return this.personaRepository.findOne(id)
                 .filter(persona -> !persona.isBorrado());
     }

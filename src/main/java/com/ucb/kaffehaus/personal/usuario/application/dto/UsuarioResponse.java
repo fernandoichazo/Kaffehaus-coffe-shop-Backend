@@ -1,20 +1,22 @@
 package com.ucb.kaffehaus.personal.usuario.application.dto;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.personal.usuario.domain.Usuario;
 
 public class UsuarioResponse {
-    private Integer id;
-    private Integer personaId;
-    private Integer rolId;
+    private UUID id;
+    private UUID personaId;
+    private UUID rolId;
     private String correo;
     private String contrasena;
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
-    public Integer getPersonaId() {return personaId;}
-    public void setPersonaId(Integer personaId) {this.personaId = personaId;}
-    public Integer getRolId() {return rolId;}
-    public void setRolId(Integer rolId) {this.rolId = rolId;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
+    public UUID getPersonaId() {return personaId;}
+    public void setPersonaId(UUID personaId) {this.personaId = personaId;}
+    public UUID getRolId() {return rolId;}
+    public void setRolId(UUID rolId) {this.rolId = rolId;}
     public String getCorreo() {return correo;}
     public void setCorreo(String correo) {this.correo = correo;}
     public String getContrasena() {return contrasena;}

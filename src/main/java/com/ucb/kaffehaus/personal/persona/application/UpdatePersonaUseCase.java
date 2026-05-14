@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.persona.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ public class UpdatePersonaUseCase {
         this.personaRepository = personaRepository;
     }
 
-    public Optional<Persona> execute(int id, UpdatePersonaRequest request) {
+    public Optional<Persona> execute(UUID id, UpdatePersonaRequest request) {
         request.validate();
 
         Persona personaToUpdate = Persona.create(

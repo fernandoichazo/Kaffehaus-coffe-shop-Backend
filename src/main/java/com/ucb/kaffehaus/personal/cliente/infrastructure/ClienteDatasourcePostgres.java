@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.cliente.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class ClienteDatasourcePostgres implements ClienteDatasource{
     }
 
     @Override
-    public Optional<Cliente> update(int Id, Cliente cliente) {
+    public Optional<Cliente> update(UUID Id, Cliente cliente) {
         ClienteEntity entity = this.clienteJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro cliente con id " + Id));
 
@@ -64,7 +65,7 @@ public class ClienteDatasourcePostgres implements ClienteDatasource{
     }
 
     @Override
-    public Optional<Cliente> findOne(int Id) {
+    public Optional<Cliente> findOne(UUID Id) {
         ClienteEntity entity = this.clienteJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro cliente con id " + Id));
 
@@ -76,7 +77,7 @@ public class ClienteDatasourcePostgres implements ClienteDatasource{
     }
 
     @Override
-    public boolean deleteOne(int Id) {
+    public boolean deleteOne(UUID Id) {
         ClienteEntity entity = this.clienteJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro cliente con id " + Id));
 
@@ -102,7 +103,7 @@ public class ClienteDatasourcePostgres implements ClienteDatasource{
         return Cliente.restore(entity.getId(), persona, entity.isBorrado());
     }
 
-    private PersonaEntity getPersonaEntity(Integer personaId) {
+    private PersonaEntity getPersonaEntity(UUID personaId) {
         PersonaEntity personaEntity = this.personaJpaRepository.findById(personaId)
                 .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + personaId));
 

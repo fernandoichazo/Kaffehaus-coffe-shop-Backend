@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.entidad.presentation;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,19 +63,19 @@ public class EntidadController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EntidadResponse> getOneEntidad(@PathVariable int id) {
+    public ResponseEntity<EntidadResponse> getOneEntidad(@PathVariable UUID id) {
         Entidad entidad = this.getOneEntidadUseCase.execute(id).get();
         return ResponseEntity.ok(EntidadResponse.from(entidad));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EntidadResponse> updateEntidad(@PathVariable int id, @RequestBody UpdateEntidadRequest request) {
+    public ResponseEntity<EntidadResponse> updateEntidad(@PathVariable UUID id, @RequestBody UpdateEntidadRequest request) {
         Entidad entidad = this.updateEntidadUseCase.execute(id, request).get();
         return ResponseEntity.ok(EntidadResponse.from(entidad));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteEntidad(@PathVariable int id) {
+    public ResponseEntity<?> deleteEntidad(@PathVariable UUID id) {
         boolean deleted = this.deleteEntidadUseCase.execute(id);
         return ResponseEntity.ok(deleted);
     }

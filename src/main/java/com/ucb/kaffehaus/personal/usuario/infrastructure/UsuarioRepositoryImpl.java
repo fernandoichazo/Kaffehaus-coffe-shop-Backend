@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.usuario.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public Optional<Usuario> update(int Id, Usuario usuario) {
+    public Optional<Usuario> update(UUID Id, Usuario usuario) {
         return this.datasource.update(Id, usuario);
     }
 
@@ -34,12 +35,12 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public Optional<Usuario> findOne(int Id) {
+    public Optional<Usuario> findOne(UUID Id) {
         return this.datasource.findOne(Id);
     }
 
     @Override
-    public boolean deleteOne(int Id) {
+    public boolean deleteOne(UUID Id) {
         return this.datasource.deleteOne(Id);
     }
 }

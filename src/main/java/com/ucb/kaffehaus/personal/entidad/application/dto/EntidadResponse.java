@@ -1,17 +1,19 @@
 package com.ucb.kaffehaus.personal.entidad.application.dto;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.personal.entidad.domain.Entidad;
 
 public class EntidadResponse {
-    private Integer id;
+    private UUID id;
     private String nombre;
     private String nit;
     private String telefono;
     private String descripcion;
     private boolean borrado;
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
     public String getNombre() {return nombre;}
     public void setNombre(String nombre) {this.nombre = nombre;}
     public String getNit() {return nit;}

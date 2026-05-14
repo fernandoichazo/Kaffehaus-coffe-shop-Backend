@@ -1,31 +1,59 @@
 package com.ucb.kaffehaus.personal.usuario.application.dto;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.shared.application.dto.ValidationResult;
 import com.ucb.kaffehaus.shared.application.exception.ValidationException;
 
 public class CreateUsuarioRequest {
-    private Integer personaId;
-    private Integer rolId;
+    private UUID personaId;
+    private UUID rolId;
     private String correo;
     private String contrasena;
+    private String nombre;
+    private String apellidos;
+    private String telefono;
+    private String dni;
 
-    public Integer getPersonaId() {return personaId;}
-    public void setPersonaId(Integer personaId) {this.personaId = personaId;}
-    public Integer getRolId() {return rolId;}
-    public void setRolId(Integer rolId) {this.rolId = rolId;}
+    public UUID getPersonaId() {return personaId;}
+    public void setPersonaId(UUID personaId) {this.personaId = personaId;}
+    public UUID getRolId() {return rolId;}
+    public void setRolId(UUID rolId) {this.rolId = rolId;}
     public String getCorreo() {return correo;}
     public void setCorreo(String correo) {this.correo = correo;}
     public String getContrasena() {return contrasena;}
     public void setContrasena(String contrasena) {this.contrasena = contrasena;}
+    public String getNombre() {return nombre;}
+    public void setNombre(String nombre) {this.nombre = nombre;}
+    public String getApellidos() {return apellidos;}
+    public void setApellidos(String apellidos) {this.apellidos = apellidos;}
+    public String getTelefono() {return telefono;}
+    public void setTelefono(String telefono) {this.telefono = telefono;}
+    public String getDni() {return dni;}
+    public void setDni(String dni) {this.dni = dni;}
 
     public ValidationResult validate() {
         ValidationResult result = new ValidationResult();
 
-        if (personaId == null || personaId <= 0) {
-            result.addError("personaId", "La persona es obligatoria");
+        if (personaId == null) {
+            if (nombre == null || nombre.trim().isEmpty()) {
+                result.addError("nombre", "El nombre es obligatorio");
+            } else if (nombre.length() < 2 || nombre.length() > 100) {
+                result.addError("nombre", "El nombre debe tener entre 2 y 100 caracteres");
+            }
+
+            if (apellidos == null || apellidos.trim().isEmpty()) {
+                result.addError("apellidos", "Los apellidos son necesarios");
+            } else if (apellidos.length() < 2 || apellidos.length() > 100) {
+                result.addError("apellidos", "Los apellidos deben tener entre 2 y 100 caracteres");
+            }
+
+            if (dni == null || dni.trim().isEmpty()) {
+                result.addError("dni", "El dni es necesario");
+            }
         }
 
-        if (rolId == null || rolId <= 0) {
+        if (rolId == null) {
             result.addError("rolId", "El rol es obligatorio");
         }
 

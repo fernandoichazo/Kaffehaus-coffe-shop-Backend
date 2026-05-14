@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.rol.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ public class UpdateRolUseCase {
         this.rolRepository = rolRepository;
     }
 
-    public Optional<Rol> execute(int id, UpdateRolRequest request) {
+    public Optional<Rol> execute(UUID id, UpdateRolRequest request) {
         request.validate();
 
         Rol rolToUpdate = Rol.restore(id, request.getNombre(), false);

@@ -1,15 +1,16 @@
 package com.ucb.kaffehaus.personal.persona.domain;
 
+import java.util.UUID;
 
 public class Persona{
-    private Integer id;
+    private UUID id;
     private String nombre;
     private String apellidos;
     private String telefono;
     private String dni;
     private boolean borrado;
 
-    private Persona(Integer id, String nombre, String apellidos, String telefono, String dni, boolean borrado) {
+    private Persona(UUID id, String nombre, String apellidos, String telefono, String dni, boolean borrado) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -22,13 +23,13 @@ public class Persona{
         return new Persona(null, nombre, apellidos, telefono, dni, false);
     }
 
-    public static Persona restore(int id, String nombre, String apellidos, String telefono, String dni, boolean borrado){
+    public static Persona restore(UUID id, String nombre, String apellidos, String telefono, String dni, boolean borrado){
         return new Persona(id, nombre, apellidos, telefono, dni, borrado);
     }
 
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
     public String getNombre() {return nombre;}
     public void setNombre(String nombre) {this.nombre = nombre;}
     public String getApellidos() {return apellidos;}

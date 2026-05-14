@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.usuario.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,7 @@ public class UpdateUsuarioUseCase {
         this.rolRepository = rolRepository;
     }
 
-    public Optional<Usuario> execute(int id, UpdateUsuarioRequest request) {
+    public Optional<Usuario> execute(UUID id, UpdateUsuarioRequest request) {
         request.validate();
 
         Persona persona = null;

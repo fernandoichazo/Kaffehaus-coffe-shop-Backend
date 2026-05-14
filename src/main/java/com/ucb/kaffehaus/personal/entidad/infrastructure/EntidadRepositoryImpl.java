@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.entidad.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class EntidadRepositoryImpl implements EntidadRepository {
 	}
 
 	@Override
-	public Optional<Entidad> update(int Id, Entidad entidad) {
+	public Optional<Entidad> update(UUID Id, Entidad entidad) {
 		return this.datasource.update(Id, entidad);
 	}
 
@@ -34,12 +35,12 @@ public class EntidadRepositoryImpl implements EntidadRepository {
 	}
 
 	@Override
-	public Optional<Entidad> findOne(int Id) {
+	public Optional<Entidad> findOne(UUID Id) {
 		return this.datasource.findOne(Id);
 	}
 
 	@Override
-	public boolean deleteOne(int Id) {
+	public boolean deleteOne(UUID Id) {
 		return this.datasource.deleteOne(Id);
 	}
 }

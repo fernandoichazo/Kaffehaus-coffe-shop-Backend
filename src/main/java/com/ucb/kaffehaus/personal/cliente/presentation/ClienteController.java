@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.cliente.presentation;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,21 +63,21 @@ public class ClienteController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<ClienteResponse> getOneCliente(@PathVariable int id) {
+	public ResponseEntity<ClienteResponse> getOneCliente(@PathVariable UUID id) {
 		Cliente cliente = this.getOneClienteUseCase.execute(id).get();
 		return ResponseEntity.ok(ClienteResponse.from(cliente));
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<ClienteResponse> updateCliente(
-			@PathVariable int id,
+			@PathVariable UUID id,
 			@RequestBody UpdateClienteRequest request) {
 		Cliente cliente = this.updateClienteUseCase.execute(id, request).get();
 		return ResponseEntity.ok(ClienteResponse.from(cliente));
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteCliente(@PathVariable int id) {
+	public ResponseEntity<?> deleteCliente(@PathVariable UUID id) {
 		boolean deleted = this.deleteClienteUseCase.execute(id);
 		return ResponseEntity.ok(deleted);
 	}

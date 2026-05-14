@@ -3,6 +3,8 @@ package com.ucb.kaffehaus.personal.rol.application;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.personal.rol.domain.RolRepository;
 
 @Service
@@ -15,7 +17,7 @@ public class DeleteRolUseCase {
         this.rolRepository = rolRepository;
     }
 
-    public boolean execute(int id) {
+    public boolean execute(UUID id) {
         return this.rolRepository.deleteOne(id);
     }
 }

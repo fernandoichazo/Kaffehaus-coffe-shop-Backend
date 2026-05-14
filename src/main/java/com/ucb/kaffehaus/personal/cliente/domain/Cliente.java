@@ -1,14 +1,16 @@
 package com.ucb.kaffehaus.personal.cliente.domain;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
 import com.ucb.kaffehaus.shared.domain.AggregateRoot;
 
-public class Cliente extends AggregateRoot<Integer>{
+public class Cliente extends AggregateRoot<UUID>{
 
     private boolean borrado;
     private Persona persona;
 
-    private Cliente(Integer id, boolean borrado, Persona persona) {
+    private Cliente(UUID id, boolean borrado, Persona persona) {
         super(id);
         this.borrado = borrado;
         this.persona = persona;
@@ -18,7 +20,7 @@ public class Cliente extends AggregateRoot<Integer>{
         return new Cliente(null, false, persona);
     }
 
-    public static Cliente restore(Integer id, Persona persona, boolean borrado) {
+    public static Cliente restore(UUID id, Persona persona, boolean borrado) {
         return new Cliente(id, borrado, persona);
     }
 

@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.entidad.infrastructure;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,8 +15,8 @@ import jakarta.persistence.Table;
 public class EntidadEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
@@ -49,8 +50,8 @@ public class EntidadEntity {
         this.borrado = false;
     }
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
     public String getNombre() {return nombre;}
     public void setNombre(String nombre) {this.nombre = nombre;}
     public String getNit() {return nit;}

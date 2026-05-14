@@ -1,18 +1,20 @@
 package com.ucb.kaffehaus.personal.usuario.application.dto;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.shared.application.dto.ValidationResult;
 import com.ucb.kaffehaus.shared.application.exception.ValidationException;
 
 public class UpdateUsuarioRequest {
-    private Integer personaId;
-    private Integer rolId;
+    private UUID personaId;
+    private UUID rolId;
     private String correo;
     private String contrasena;
 
-    public Integer getPersonaId() {return personaId;}
-    public void setPersonaId(Integer personaId) {this.personaId = personaId;}
-    public Integer getRolId() {return rolId;}
-    public void setRolId(Integer rolId) {this.rolId = rolId;}
+    public UUID getPersonaId() {return personaId;}
+    public void setPersonaId(UUID personaId) {this.personaId = personaId;}
+    public UUID getRolId() {return rolId;}
+    public void setRolId(UUID rolId) {this.rolId = rolId;}
     public String getCorreo() {return correo;}
     public void setCorreo(String correo) {this.correo = correo;}
     public String getContrasena() {return contrasena;}
@@ -20,14 +22,6 @@ public class UpdateUsuarioRequest {
 
     public ValidationResult validate() {
         ValidationResult result = new ValidationResult();
-
-        if (personaId != null && personaId <= 0) {
-            result.addError("personaId", "La persona no es valida");
-        }
-
-        if (rolId != null && rolId <= 0) {
-            result.addError("rolId", "El rol no es valido");
-        }
 
         if (correo != null) {
             String correoLimpio = correo.trim();

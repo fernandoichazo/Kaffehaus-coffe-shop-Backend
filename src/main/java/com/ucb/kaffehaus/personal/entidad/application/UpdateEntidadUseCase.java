@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.entidad.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ public class UpdateEntidadUseCase {
         this.entidadRepository = entidadRepository;
     }
 
-    public Optional<Entidad> execute(int id, UpdateEntidadRequest request) {
+    public Optional<Entidad> execute(UUID id, UpdateEntidadRequest request) {
         request.validate();
 
         Entidad entidadToUpdate = Entidad.restore(

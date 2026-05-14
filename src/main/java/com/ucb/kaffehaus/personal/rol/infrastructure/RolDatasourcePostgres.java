@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.rol.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class RolDatasourcePostgres implements RolDatasource {
     }
 
     @Override
-    public Optional<Rol> update(int Id, Rol rol) {
+    public Optional<Rol> update(UUID Id, Rol rol) {
         RolEntity entity = this.rolJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro rol con id " + Id));
 
@@ -52,7 +53,7 @@ public class RolDatasourcePostgres implements RolDatasource {
     }
 
     @Override
-    public Optional<Rol> findOne(int Id) {
+    public Optional<Rol> findOne(UUID Id) {
         RolEntity entity = this.rolJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro rol con id " + Id));
 
@@ -64,7 +65,7 @@ public class RolDatasourcePostgres implements RolDatasource {
     }
 
     @Override
-    public boolean deleteOne(int Id) {
+    public boolean deleteOne(UUID Id) {
         RolEntity entity = this.rolJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro rol con id " + Id));
 

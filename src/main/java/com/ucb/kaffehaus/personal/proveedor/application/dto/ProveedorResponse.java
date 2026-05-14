@@ -1,19 +1,21 @@
 package com.ucb.kaffehaus.personal.proveedor.application.dto;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.personal.proveedor.domain.Proveedor;
 
 public class ProveedorResponse {
-    private Integer id;
-    private Integer personaId;
-    private Integer entidadId;
+    private UUID id;
+    private UUID personaId;
+    private UUID entidadId;
     private boolean borrado;
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
-    public Integer getPersonaId() {return personaId;}
-    public void setPersonaId(Integer personaId) {this.personaId = personaId;}
-    public Integer getEntidadId() {return entidadId;}
-    public void setEntidadId(Integer entidadId) {this.entidadId = entidadId;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
+    public UUID getPersonaId() {return personaId;}
+    public void setPersonaId(UUID personaId) {this.personaId = personaId;}
+    public UUID getEntidadId() {return entidadId;}
+    public void setEntidadId(UUID entidadId) {this.entidadId = entidadId;}
     public boolean isBorrado() {return borrado;}
     public void setBorrado(boolean borrado) {this.borrado = borrado;}
 

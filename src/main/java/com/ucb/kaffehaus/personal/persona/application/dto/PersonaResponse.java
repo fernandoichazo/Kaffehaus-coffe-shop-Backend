@@ -1,17 +1,19 @@
 package com.ucb.kaffehaus.personal.persona.application.dto;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.personal.persona.domain.Persona;
 
 public class PersonaResponse {
-    private int id;
+    private UUID id;
     private String nombre;
     private String apellidos;
     private String telefono;
     private String dni;
     private boolean borrado;
 
-    public int getId() {return id;}
-    public void setId(int id) {this.id = id;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
     public String getNombre() {return nombre;}
     public void setNombre(String nombre) {this.nombre = nombre;}
     public String getApellidos() {return apellidos;}

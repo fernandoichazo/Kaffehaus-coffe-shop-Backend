@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.rol.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ public class GetOneRolUseCase {
         this.rolRepository = rolRepository;
     }
 
-    public Optional<Rol> execute(int id) {
+    public Optional<Rol> execute(UUID id) {
         return this.rolRepository.findOne(id)
                 .filter(rol -> !rol.isBorrado());
     }

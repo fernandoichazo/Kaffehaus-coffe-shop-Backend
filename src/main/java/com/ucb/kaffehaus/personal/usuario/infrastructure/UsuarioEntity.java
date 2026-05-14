@@ -1,5 +1,6 @@
 package com.ucb.kaffehaus.personal.usuario.infrastructure;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.ucb.kaffehaus.personal.persona.infrastructure.PersonaEntity;
 import com.ucb.kaffehaus.personal.rol.infrastructure.RolEntity;
@@ -20,8 +21,8 @@ import jakarta.persistence.Table;
 public class UsuarioEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_persona", nullable = false, unique = true)
@@ -52,8 +53,8 @@ public class UsuarioEntity {
         this.fecC = LocalDateTime.now(); 
     }
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
     public PersonaEntity getPersona() {return persona;}
     public void setPersona(PersonaEntity persona) {this.persona = persona;}
     public String getCorreo() {return correo;}

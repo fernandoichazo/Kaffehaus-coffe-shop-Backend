@@ -31,9 +31,18 @@ public class CreateUsuarioUseCase {
 
     public Usuario execute(CreateUsuarioRequest request) {
         request.validate();
-
-        Persona persona = this.personaRepository.findOne(request.getPersonaId())
+        Persona persona;
+        if (request.getPersonaId() == null) {
+            persona = Persona.create(
+                request.getNombre(),
+                request.getApellidos(),
+                request.getTelefono(),
+                request.getDni());
+            persona = this.personaRepository.save(persona);
+        } else {
+            persona = this.personaRepository.findOne(request.getPersonaId())
                 .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + request.getPersonaId()));
+        }
 
         Rol rol = this.rolRepository.findOne(request.getRolId())
                 .orElseThrow(() -> CustomException.notFound("No se encontro rol con id " + request.getRolId()));

@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.persona.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class PersonaRepositoryImpl implements PersonaRepository{
     }
 
     @Override
-    public Optional<Persona> update(int Id, Persona persona) {
+    public Optional<Persona> update(UUID Id, Persona persona) {
         return this.personaDatasource.update(Id, persona);
     }
 
@@ -34,12 +35,12 @@ public class PersonaRepositoryImpl implements PersonaRepository{
     }
 
     @Override
-    public Optional<Persona> findOne(int Id) {
+    public Optional<Persona> findOne(UUID Id) {
         return this.personaDatasource.findOne(Id);
     }
 
     @Override
-    public boolean deleteOne(int Id) {
+    public boolean deleteOne(UUID Id) {
         return this.personaDatasource.deleteOne(Id);
     }
 }

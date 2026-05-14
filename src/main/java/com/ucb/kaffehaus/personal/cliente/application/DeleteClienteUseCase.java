@@ -3,6 +3,8 @@ package com.ucb.kaffehaus.personal.cliente.application;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 import com.ucb.kaffehaus.personal.cliente.domain.ClienteRepository;
 
 @Service
@@ -15,7 +17,7 @@ public class DeleteClienteUseCase {
         this.clienteRepository = clienteRepository;
     }
 
-    public boolean execute(int id) {
+    public boolean execute(UUID id) {
         return this.clienteRepository.deleteOne(id);
     }
 }

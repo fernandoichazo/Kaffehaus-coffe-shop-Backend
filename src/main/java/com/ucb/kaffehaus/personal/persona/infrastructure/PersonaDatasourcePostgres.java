@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.persona.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class PersonaDatasourcePostgres implements PersonaDatasource {
     }
 
     @Override
-    public Optional<Persona> update(int Id, Persona persona) {
+    public Optional<Persona> update(UUID Id, Persona persona) {
         PersonaEntity personaEntity = this.personaJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + Id));
 
@@ -55,7 +56,7 @@ public class PersonaDatasourcePostgres implements PersonaDatasource {
     }
 
     @Override
-    public Optional<Persona> findOne(int Id) {
+    public Optional<Persona> findOne(UUID Id) {
         PersonaEntity personaEntity = this.personaJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + Id));
 
@@ -67,7 +68,7 @@ public class PersonaDatasourcePostgres implements PersonaDatasource {
     }
 
     @Override
-    public boolean deleteOne(int Id) {  
+    public boolean deleteOne(UUID Id) {  
         PersonaEntity personaEntity = this.personaJpaRepository.findById(Id)
                 .orElseThrow(() -> CustomException.notFound("No se encontro persona con id " + Id));
 

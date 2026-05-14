@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.persona.presentation;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,19 +63,19 @@ public class PersonaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PersonaResponse> getOnePersona(@PathVariable int id) {
+    public ResponseEntity<PersonaResponse> getOnePersona(@PathVariable UUID id) {
         Persona persona = this.getOnePersonaUseCase.execute(id).get();
         return ResponseEntity.ok(PersonaResponse.from(persona));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PersonaResponse> updatePersona(@PathVariable int id, @RequestBody UpdatePersonaRequest request) {
+    public ResponseEntity<PersonaResponse> updatePersona(@PathVariable UUID id, @RequestBody UpdatePersonaRequest request) {
         Persona persona = this.updatePersonaUseCase.execute(id, request).get();
         return ResponseEntity.ok(PersonaResponse.from(persona));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletePersona(@PathVariable int id) {
+    public ResponseEntity<?> deletePersona(@PathVariable UUID id) {
         boolean deleted = this.deletePersonaUseCase.execute(id);
         return ResponseEntity.ok(deleted);
     }

@@ -2,6 +2,7 @@ package com.ucb.kaffehaus.personal.proveedor.infrastructure;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 import com.ucb.kaffehaus.personal.entidad.infrastructure.EntidadEntity;
 import com.ucb.kaffehaus.personal.persona.infrastructure.PersonaEntity;
 
@@ -10,8 +11,8 @@ import com.ucb.kaffehaus.personal.persona.infrastructure.PersonaEntity;
 public class ProveedorEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_persona", nullable = false, unique = true)
@@ -44,8 +45,8 @@ public class ProveedorEntity {
         this.fecU = LocalDateTime.now();
     }
 
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
+    public UUID getId() {return id;}
+    public void setId(UUID id) {this.id = id;}
     public PersonaEntity getPersona() {return persona;}
     public void setPersona(PersonaEntity persona) {this.persona = persona;}
     public EntidadEntity getEntidad() {return entidad;}

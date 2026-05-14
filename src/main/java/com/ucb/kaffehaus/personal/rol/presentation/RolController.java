@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.rol.presentation;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,19 +63,19 @@ public class RolController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RolResponse> getOneRol(@PathVariable int id) {
+    public ResponseEntity<RolResponse> getOneRol(@PathVariable UUID id) {
         Rol rol = this.getOneRolUseCase.execute(id).get();
         return ResponseEntity.ok(RolResponse.from(rol));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RolResponse> updateRol(@PathVariable int id, @RequestBody UpdateRolRequest request) {
+    public ResponseEntity<RolResponse> updateRol(@PathVariable UUID id, @RequestBody UpdateRolRequest request) {
         Rol rol = this.updateRolUseCase.execute(id, request).get();
         return ResponseEntity.ok(RolResponse.from(rol));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteRol(@PathVariable int id) {
+    public ResponseEntity<?> deleteRol(@PathVariable UUID id) {
         boolean deleted = this.deleteRolUseCase.execute(id);
         return ResponseEntity.ok(deleted);
     }

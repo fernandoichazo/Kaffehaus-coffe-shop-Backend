@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.usuario.presentation;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,19 +63,19 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioResponse> getOneUsuario(@PathVariable int id) {
+    public ResponseEntity<UsuarioResponse> getOneUsuario(@PathVariable UUID id) {
         Usuario usuario = this.getOneUsuarioUseCase.execute(id).get();
         return ResponseEntity.ok(UsuarioResponse.from(usuario));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioResponse> updateUsuario(@PathVariable int id, @RequestBody UpdateUsuarioRequest request) {
+    public ResponseEntity<UsuarioResponse> updateUsuario(@PathVariable UUID id, @RequestBody UpdateUsuarioRequest request) {
         Usuario usuario = this.updateUsuarioUseCase.execute(id, request).get();
         return ResponseEntity.ok(UsuarioResponse.from(usuario));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<?> deleteUsuario(@PathVariable UUID id) {
         boolean deleted = this.deleteUsuarioUseCase.execute(id);
         return ResponseEntity.ok(deleted);
     }

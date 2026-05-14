@@ -1,6 +1,7 @@
 package com.ucb.kaffehaus.personal.proveedor.application;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,7 @@ public class UpdateProveedorUseCase {
         this.entidadRepository = entidadRepository;
     }
 
-    public Optional<Proveedor> execute(int id, UpdateProveedorRequest request) {
+    public Optional<Proveedor> execute(UUID id, UpdateProveedorRequest request) {
         request.validate();
 
         Persona persona = null;
