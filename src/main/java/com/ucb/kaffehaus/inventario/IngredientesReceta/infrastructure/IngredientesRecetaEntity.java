@@ -1,4 +1,4 @@
-package com.ucb.kaffehaus.inventario.IngredientesReceta.infrastructure;
+package com.ucb.kaffehaus.inventario.ingredientesReceta.infrastructure;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
