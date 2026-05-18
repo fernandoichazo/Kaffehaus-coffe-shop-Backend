@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ucb.kaffehaus.personal.cliente.application.CreateClienteUseCase;
@@ -23,6 +24,8 @@ import com.ucb.kaffehaus.personal.cliente.application.dto.ClienteResponse;
 import com.ucb.kaffehaus.personal.cliente.application.dto.CreateClienteRequest;
 import com.ucb.kaffehaus.personal.cliente.application.dto.UpdateClienteRequest;
 import com.ucb.kaffehaus.personal.cliente.domain.Cliente;
+import com.ucb.kaffehaus.shared.application.dto.PaginatedResponse;
+import com.ucb.kaffehaus.shared.application.dto.PaginationDto;
 
 @RestController
 @RequestMapping("/api/v1/cliente")
@@ -55,11 +58,16 @@ public class ClienteController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<ClienteResponse>> getAllClientes() {
-		List<ClienteResponse> clientes = this.getAllClienteUseCase.execute().stream()
+	public ResponseEntity<PaginatedResponse<List<ClienteResponse>>> getAllClientes(
+			@RequestParam(required = false) String search,
+			@RequestParam(required = false) Integer limit,
+			@RequestParam(required = false) Integer skip) {
+		PaginationDto pagination = new PaginationDto(search, limit, skip);
+		PaginatedResponse<java.util.List<Cliente>> paged = this.getAllClienteUseCase.execute(pagination);
+		java.util.List<ClienteResponse> clientes = paged.getData().stream()
 				.map(ClienteResponse::from)
 				.toList();
-		return ResponseEntity.ok(clientes);
+		return ResponseEntity.ok(PaginatedResponse.of(clientes, paged.getTotal()));
 	}
 
 	@GetMapping("/{id}")
