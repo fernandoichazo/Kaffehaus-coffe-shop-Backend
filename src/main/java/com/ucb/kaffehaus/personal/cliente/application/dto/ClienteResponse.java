@@ -6,7 +6,6 @@ import com.ucb.kaffehaus.personal.cliente.domain.Cliente;
 
 public class ClienteResponse {
     private UUID id;
-    private UUID personaId;
     private String nombre;
     private String apellidos;
     private String telefono;
@@ -16,8 +15,6 @@ public class ClienteResponse {
 
     public UUID getId() {return id;}
     public void setId(UUID id) {this.id = id;}
-    public UUID getPersonaId() {return personaId;}
-    public void setPersonaId(UUID personaId) {this.personaId = personaId;}
     public String getNombre() {return nombre;}
     public void setNombre(String nombre) {this.nombre = nombre;}
     public String getApellidos() {return apellidos;}
@@ -35,7 +32,6 @@ public class ClienteResponse {
         ClienteResponse response = new ClienteResponse();
         response.id = cliente.getId();
         if (cliente.getPersona() != null) {
-            response.personaId = cliente.getPersona().getId();
             response.nombre = cliente.getPersona().getNombre();
             response.apellidos = cliente.getPersona().getApellidos();
             response.telefono = cliente.getPersona().getTelefono();
