@@ -37,6 +37,9 @@ public class DetalleLoteEntity {
     @Column(name = "fecha_acabado")
     private LocalDate fechaAcabado;
 
+    @Column(name = "borrado", nullable = false)
+    private boolean borrado;
+
     protected DetalleLoteEntity() {
     }
 
@@ -48,6 +51,7 @@ public class DetalleLoteEntity {
         this.precioUnitario = precioUnitario;
         this.fechaAcabado = fechaAcabado;
         this.subtotal = cantidad.multiply(precioUnitario);
+        this.borrado = false;
     }
 
     public UUID getId() {
@@ -104,5 +108,13 @@ public class DetalleLoteEntity {
 
     public void setFechaAcabado(LocalDate fechaAcabado) {
         this.fechaAcabado = fechaAcabado;
+    }
+
+    public boolean isBorrado() {
+        return borrado;
+    }
+
+    public void setBorrado(boolean borrado) {
+        this.borrado = borrado;
     }
 }

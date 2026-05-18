@@ -27,6 +27,9 @@ public class IngredientesRecetaEntity {
     @Column(name = "cantidad", nullable = false, precision = 10, scale = 2)
     private BigDecimal cantidad;
 
+    @Column(name = "borrado", nullable = false)
+    private boolean borrado;
+
     protected IngredientesRecetaEntity() {
     }
 
@@ -34,6 +37,7 @@ public class IngredientesRecetaEntity {
         this.receta = receta;
         this.producto = producto;
         this.cantidad = cantidad;
+        this.borrado = false;
     }
 
     public UUID getId() {return id;}
@@ -44,4 +48,6 @@ public class IngredientesRecetaEntity {
     public void setProducto(ProductoEntity producto) {this.producto = producto;}
     public BigDecimal getCantidad() {return cantidad;}
     public void setCantidad(BigDecimal cantidad) {this.cantidad = cantidad;}
+    public boolean isBorrado() {return borrado;}
+    public void setBorrado(boolean borrado) {this.borrado = borrado;}
 }
